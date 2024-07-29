@@ -3,12 +3,13 @@ const subdomain = require('express-subdomain');
 const path = require('path');
 const colors = require('colors');
 const discovery = require('./routes/disc-olv');
+const portal = require('./routes/portal-olv');
 const config = require('./config.json');
 const app = express();
 const port = config.port;
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public', 'views'));
+app.set('views', path.join(__dirname, 'public', 'portal', 'views'));
 app.use(express.static('public'));
 
 try {
@@ -19,6 +20,18 @@ try {
 } catch (error) {
   console.error(
     '[Error] Could not create Discovery subdomain!'.brightRed.bold,
+    error
+  );
+}
+
+try {
+  app.use(subdomain('portal.olv', portal));
+  console.log(
+    '[Success] Successfully created Portal subdomain'.brightGreen.bold
+  );
+} catch (error) {
+  console.error(
+    '[Error] Could not create Portal subdomain!'.brightRed.bold,
     error
   );
 }
