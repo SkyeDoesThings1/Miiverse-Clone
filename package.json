@@ -1,0 +1,18 @@
+{
+  "name": "miiverse",
+  "version": "1.0.0",
+  "description": "Miiverse but I rewrote it",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "SkyeDoesThings",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-subdomain": "^1.0.6",
+    "xmlbuilder2": "^3.1.1"
+  }
+}
