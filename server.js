@@ -1,41 +1,24 @@
 const express = require('express');
-const subdomain = require('express-subdomain');
 const path = require('path');
-const colors = require('colors');
-const discovery = require('./routes/disc-olv');
-const portal = require('./routes/portal-olv');
+const fs = require('fs');
+const https = require('https');
 const config = require('./config.json');
 const app = express();
 const port = config.port;
+const middleware = require('./middleware/middleware');
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'public', 'portal', 'views'));
-app.use(express.static('public'));
+const privateKey = fs.readFileSync(
+  path.join(__dirname, 'certs', 'key.pem'),
+  'utf8',
+);
+const certificate = fs.readFileSync(
+  path.join(__dirname, 'certs', 'cert.pem'),
+  'utf8',
+);
+const credentials = { key: privateKey, cert: certificate };
 
-try {
-  app.use(subdomain('disc.olv', discovery));
-  console.log(
-    '[Success] Successfully created Discovery subdomain'.brightGreen.bold
-  );
-} catch (error) {
-  console.error(
-    '[Error] Could not create Discovery subdomain!'.brightRed.bold,
-    error
-  );
-}
+middleware(app);
 
-try {
-  app.use(subdomain('portal.olv', portal));
-  console.log(
-    '[Success] Successfully created Portal subdomain'.brightGreen.bold
-  );
-} catch (error) {
-  console.error(
-    '[Error] Could not create Portal subdomain!'.brightRed.bold,
-    error
-  );
-}
-
-app.listen(port, () => {
+https.createServer(credentials, app).listen(port, () => {
   console.log(`Server running on port: ${port}`.brightBlue.bold);
 });

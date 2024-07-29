@@ -4,7 +4,8 @@
   "description": "Miiverse but I rewrote it",
   "main": "server.js",
   "scripts": {
-    "test": "npm start"
+    "test": "npm start",
+    "format": "npx prettier . --write"
   },
   "author": "SkyeDoesThings",
   "license": "ISC",
@@ -13,9 +14,13 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-subdomain": "^1.0.6",
+    "prettier": "^3.3.3",
     "xmlbuilder2": "^3.1.1"
   },
   "devDependencies": {
-    "@pretendonetwork/wiiu-browser-types": "^1.0.0"
+    "@eslint/js": "^9.8.0",
+    "@pretendonetwork/wiiu-browser-types": "^1.0.0",
+    "eslint": "^9.8.0",
+    "globals": "^15.8.0"
   }
 }

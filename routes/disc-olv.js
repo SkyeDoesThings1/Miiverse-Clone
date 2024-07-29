@@ -1,5 +1,5 @@
 console.log(
-  '[Startup] Attempting to create Discovery subdomain...'.brightYellow.bold
+  '[Startup] Attempting to create Discovery subdomain...'.brightYellow.bold,
 );
 
 const express = require('express');
@@ -35,10 +35,6 @@ const disc = create({ version: '1.0', encoding: 'UTF-8' })
   .doc();
 
 const xml = disc.end({ prettyPrint: true });
-
-if (!fs.existsSync('public')) {
-  fs.mkdirSync('public');
-}
 
 if (!fs.existsSync('public/xml')) {
   fs.mkdirSync('public/xml');
