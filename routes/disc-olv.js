@@ -36,11 +36,11 @@ const disc = create({ version: '1.0', encoding: 'UTF-8' })
 
 const xml = disc.end({ prettyPrint: true });
 
-if (!fs.existsSync('public/xml')) {
-  fs.mkdirSync('public/xml');
+if (!fs.existsSync('public/discovery')) {
+  fs.mkdirSync('public/discovery');
 }
 
-fs.writeFileSync('public/xml/discovery.xml', xml);
+fs.writeFileSync('public/discovery/discovery.xml', xml);
 
 router.get('/v1/endpoint', (req, res) => {
   res.header('Content-Type', 'application/xml');

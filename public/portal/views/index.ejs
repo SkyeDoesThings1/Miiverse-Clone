@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head') %>
+<%- include('../partials/head') %>
 
-  <body onload="wiiuBrowser.endStartUp();">
-    <div id="container">
-      <%- include('../partials/menu', { exit: true }) %>
-      <header>
-        <h1 id="header-text">Welcome to Miiverse!</h1>
-      </header>
+<body onload="stopLoadingSetup();">
+  <div id="container">
+    <%- include('../partials/menu', { exit: true }) %>
+    <header>
+      <h1 id="header-text">Welcome to Miiverse!</h1>
+    </header>
+    <br />
+    <main>
+      <p>
+        This clone is still in development so theres not much here yet. Sorry!
+      </p>
       <br />
-      <main>
-        <p>
-          This clone is still in development so theres not much here yet. Sorry!
-        </p>
-        <br />
-        <h1>Testing buttons!</h1>
-        <ul>
-          <li><button onclick="openTVii();">Open TVii</button></li>
-          <li><button onclick="startDrawing(false);">Start Drawing</button></li>
-          <li>
-            <button onclick="takeScreenshot();">Take ScreenShot</button>
-          </li>
-          <li>
-            <button onclick="resetDrawing();">Reset Drawing/Screenshot</button>
-          </li>
-          <li>
-            <button onclick="refresh();">Refresh</button>
-          </li>
-          <li>
-            <button
-              class="about-button"
-              onclick="wiiuSound.playSoundByName('SE_WAVE_MENU', 1);
-                    wiiuSound.playSoundByName('BGM_OLV_MAIN', 3);"
-            >
-              Play normal Miiverse theme
-            </button>
-          </li>
-        </ul>
-        <br />
-        <h1 id="memoText" class="hidden">Heres your drawing:</h1>
-        <img id="memo" src="" class="hidden" />
-      </main>
-      <footer>
-        <a id="exitbtn"></a>
-      </footer>
-    </div>
-  </body>
+      <h1>Testing buttons!</h1>
+      <ul>
+        <li><button onclick="openTVii();">Open TVii</button></li>
+        <li><button onclick="startDrawing(false);">Start Drawing</button></li>
+        <li>
+          <button onclick="takeScreenshot();">Take ScreenShot</button>
+        </li>
+        <li>
+          <button onclick="resetDrawing();">Reset Drawing/Screenshot</button>
+        </li>
+        <li>
+          <button onclick="refresh();">Refresh</button>
+        </li>
+        <li>
+          <button class="about-button" onclick="wiiuSound.playSoundByName('SE_WAVE_MENU', 1);
+                    wiiuSound.playSoundByName('BGM_OLV_MAIN', 3);">
+            Play normal Miiverse theme
+          </button>
+        </li>
+        <li>
+          <button class="about-button" onclick="wiiuSound.playSoundByName('SE_WAVE_MENU', 1);
+                    wiiuSound.playSoundByName('BGM_OLV_INIT', 3);">
+            Play setup Miiverse theme
+          </button>
+        </li>
+        <li><button onclick="emulation();">Enable Wii U emulation</button></li>
+        <li><button onclick="noEmulation();">Disable Wii U emulation</button></li>
+      </ul>
+      <br />
+      <h1 id="memoText" class="hidden">Heres your drawing:</h1>
+      <img id="memo" src="" class="hidden" />
+    </main>
+    <footer>
+      <a id="exitbtn"></a>
+    </footer>
+  </div>
+</body>
+
 </html>

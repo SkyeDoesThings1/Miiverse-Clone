@@ -2,3 +2,4 @@ node_modules/
 certs/
 package-lock.json
 config.json
+public/discovery/

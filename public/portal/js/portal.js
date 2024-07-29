@@ -1,5 +1,8 @@
 // Remove emulation on prod
-if (typeof wiiuMemo === 'undefined') {
+
+let emulation = false;
+
+if (typeof wiiuBrowser === 'undefined' && emulation === true) {
   window.wiiuMemo = {
     getImage: function () {
       return '../src/Memo.png';
@@ -26,7 +29,7 @@ if (typeof wiiuMemo === 'undefined') {
   };
 }
 
-if (typeof wiiuBrowser === 'undefined') {
+if (typeof wiiuMemo === 'undefined' && emulation === true) {
   window.wiiuBrowser = {
     exit: function () {
       console.log('Exiting...'),
@@ -48,15 +51,7 @@ if (typeof wiiuBrowser === 'undefined') {
   };
 }
 
-if (typeof wiiuSound === 'undefined') {
-  window.wiiuSound = {
-    playSoundByName: function (label) {
-      console.log(`Played sound ${label}`);
-    },
-  };
-}
-
-if (typeof wiiuMainApplication === 'undefined') {
+if (typeof wiiuMainApplication === 'undefined' && emulation === true) {
   window.wiiuMainApplication = {
     getScreenShot: function (unk) {
       if (unk === true) {
@@ -68,6 +63,22 @@ if (typeof wiiuMainApplication === 'undefined') {
       }
     },
   };
+}
+
+if (typeof wiiuSound === 'undefined' && emulation === true) {
+  window.wiiuSound = {
+    playSoundByName: function (label) {
+      console.log(`Played sound ${label}`);
+    },
+  };
+}
+
+function noEmulation() {
+  var emulation = false;
+}
+
+function emulation() {
+  var emulation = true;
 }
 
 // Where the code actually begins
@@ -151,4 +162,8 @@ function back() {
 
 function refresh() {
   location.reload();
+}
+
+function openYT() {
+  location.href = 'https://www.youtube.com';
 }
