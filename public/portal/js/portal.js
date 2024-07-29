@@ -1,0 +1,3 @@
+function stopLoading() {
+  wiiuBrowser.endStartUp();
+}

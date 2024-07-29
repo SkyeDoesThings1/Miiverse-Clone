@@ -14,5 +14,8 @@
     "express": "^4.19.2",
     "express-subdomain": "^1.0.6",
     "xmlbuilder2": "^3.1.1"
+  },
+  "devDependencies": {
+    "@pretendonetwork/wiiu-browser-types": "^1.0.0"
   }
 }
